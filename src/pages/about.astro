@@ -1,17 +1,7 @@
 ---
-const pageTitle = "Astro 1"
+import MainLayout from "../layouts/MainLayout.astro"
 ---
 
-<html>
-    <head>
-        <meta charset="utf-8" />
-        <meta name="viewport" content="width=device-width" />
-        <title>Astro</title>
-    </head>
-    <body>
-        <a href="/">Home</a>
-        <a href="/blog">Blog</a>
-        <h1>{pageTitle}</h1>
-        <p>Hello my first page</p>
-    </body>
-</html>
+<MainLayout title = "About Page">
+    <p> the new about page</p>
+</MainLayout>

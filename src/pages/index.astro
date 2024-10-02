@@ -1,19 +1,14 @@
 ---
-const pageTitle = "Astro 1"
+import MainLayout from "../layouts/MainLayout.astro"
+const res = await fetch("https://api.sampleapis.com/coffee/hot")
+const data = await res.json()
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<a href="/about">About</a>
-		<a href="blog">Blog</a>
-		<h1 class="text-4xl">{pageTitle}</h1>
-        <p>Hello my first page</p>
-	</body>
-</html>
+<MainLayout title ="Home Page" >		
+	<p>Hello my first page</p>
+	<ul>
+		{data.map(coffee => (
+				<li>{coffee.title}</li>
+		))}
+	</ul>
+</MainLayout>		
