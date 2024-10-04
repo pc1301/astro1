@@ -1,11 +1,17 @@
 ---
 import MainLayout from "../layouts/MainLayout.astro"
-const res = await fetch(`${Astro.url}/api/coffee.json`)
+
+// const res = await fetch(`${Astro.url}api/coffee.json`)
+const res = await fetch(new URL("api/coffee.json", Astro.url))
+
 const data = await res.json();
 ---
 
 <MainLayout title ="Home Page" >		
-	<p>Hello my first page with some changes</p>
+	<p>Hello my first page 2</p>
+	<h1>The current URL is: {Astro.url}</h1>
+	<h1>The current URL pathname is: {Astro.url.pathname}</h1>
+	<h1>The current URL origin is: {Astro.url.origin}</h1>
 	<ul>
 		{data.map((coffee) => (
 				<li>{coffee.title}</li>
