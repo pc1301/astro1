@@ -1,9 +1,8 @@
 ---
 import MainLayout from "../layouts/MainLayout.astro"
 
-// const res = await fetch(`${Astro.url}api/coffee.json`)
-const res = await fetch(new URL("api/coffee.json", Astro.url))
-
+const res = await fetch(`${Astro.url}/api/coffee.json`)
+// const res = await fetch(new URL("api/coffee.json", Astro.url))
 const data = await res.json();
 ---
 
