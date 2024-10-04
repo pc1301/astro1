@@ -1,9 +1,12 @@
 ---
+import { db, Inquiry } from "astro:db";
 import MainLayout from "../layouts/MainLayout.astro"
 
-const res = await fetch(`${Astro.url}/api/coffee.json`)
-// const res = await fetch(new URL("api/coffee.json", Astro.url))
+// const res = await fetch(`${Astro.url}api/coffee.json`)
+const res = await fetch(new URL("api/coffee.json", Astro.url))
 const data = await res.json();
+
+const resInq = await db.select().from(Inquiry);
 ---
 
 <MainLayout title ="Home Page" >		
@@ -11,9 +14,14 @@ const data = await res.json();
 	<h1>The current URL is: {Astro.url}</h1>
 	<h1>The current URL pathname is: {Astro.url.pathname}</h1>
 	<h1>The current URL origin is: {Astro.url.origin}</h1>
-	<ul>
+	<!-- <ul>
 		{data.map((coffee) => (
 				<li>{coffee.title}</li>
+		))}
+	</ul> -->
+	<ul>
+		{resInq.map((coffee) => (
+				<li>{coffee.name}</li>
 		))}
 	</ul>
 </MainLayout>		
