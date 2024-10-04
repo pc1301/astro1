@@ -1,0 +1,37 @@
+---
+import MainLayout from "../layouts/MainLayout.astro"
+
+// const res = await fetch(`${Astro.url}api/coffee.json`)
+// const res = await fetch(new URL("api/coffee.json", Astro.url))
+// const data = await res.json();
+
+// const resInq = await fetch(new URL("api/coffee.json",Astro.url))
+// const data = await resInq.json();
+
+import { turso } from '../turso'
+const { rows } = await turso.execute('SELECT * FROM users')
+
+---
+
+<MainLayout title ="Home Page" >		
+	<p>Hello my first page 2</p>
+	<h1>The current URL is: {Astro.url}</h1>
+	<h1>The current URL pathname is: {Astro.url.pathname}</h1>
+	<h1>The current URL origin is: {Astro.url.origin}</h1>
+	<!-- <ul>
+		{data.map((coffee) => (
+				<li>{coffee.title}</li>
+		))}
+	</ul> -->
+	<!-- <ul>
+		{data.map((coffee) => (
+				<li>{coffee.name}</li>
+		))}
+	</ul> -->
+	<ul>
+		{rows.map((post) => (
+		  <li>{post.name}</li>
+		))}
+	</ul>
+	
+</MainLayout>		
