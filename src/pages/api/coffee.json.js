@@ -1,6 +1,6 @@
 // export const prerender = false;
 
-import { db, Inquiry } from "astro:db"
+// import { db, Inquiry } from "astro:db"
 
 export const GET = async () => {
 
